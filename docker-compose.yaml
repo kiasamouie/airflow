@@ -8,6 +8,8 @@ services:
       - POSTGRES_DB=airflow
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432" 
     restart: always
 
   airflow-webserver:
@@ -19,6 +21,7 @@ services:
       - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
       - AIRFLOW__WEBSERVER__WEB_SERVER_HOST=0.0.0.0
       - AIRFLOW__WEBSERVER__WEB_SERVER_PORT=8081
+      - AIRFLOW__API__AUTH_BACKEND=airflow.api.auth.backend.basic_auth
     ports:
       - "8081:8081"
     volumes:
