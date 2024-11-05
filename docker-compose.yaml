@@ -1,5 +1,4 @@
 services:
-  # PostgreSQL database for Airflow
   postgres:
     image: postgres:13
     container_name: postgres
@@ -18,6 +17,8 @@ services:
       - AIRFLOW__CORE__EXECUTOR=LocalExecutor
       - AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION=true
       - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
+      - AIRFLOW__WEBSERVER__WEB_SERVER_HOST=0.0.0.0     # Ensure Airflow listens on all interfaces
+      - AIRFLOW__WEBSERVER__WEB_SERVER_PORT=8081        # Specify the port for the webserver
     ports:
       - "8081:8081"
     volumes:
