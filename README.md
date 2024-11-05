@@ -29,19 +29,25 @@ This is a Dockerized setup for Apache Airflow. Follow the instructions below to 
 
 5. **Copy `setup.sh` Manually**:
 
-   If `setup.sh` does not copy over automatically, you can manually copy it into the container:
+   Give `setup.sh` full permissions
+
+   ```bash
+   chmod 777 ./setup.sh
+   ```
+
+   Copy into container
 
    ```bash
    docker cp setup.sh airflow-webserver:/opt/airflow/setup.sh
    ```
 
-   Then ssh into the webserver container
+   SSH into container
 
    ```bash
    docker exec -it airflow-webserver bash
    ```
 
-   And run the setup file
+   Run setup file
 
    ```bash
    ./setup.sh
