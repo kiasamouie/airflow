@@ -19,7 +19,7 @@ services:
       - AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION=true
       - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
     ports:
-      - "8080:8080"
+      - "8081:8081"
     volumes:
       - ./dags:/opt/airflow/dags
       - ./logs:/opt/airflow/logs
